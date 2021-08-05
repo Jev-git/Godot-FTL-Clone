@@ -1,5 +1,5 @@
 # Doing
-Instancing bullet from the WeaponButton.gd script.
+Enemy shield.
 # Things to keep in mind
 * This project is to learn new skills, not to have a full game/clone.
 * Scope: 1 month (August 2021).
@@ -11,7 +11,7 @@ Instancing bullet from the WeaponButton.gd script.
 # Minimal viable product
 * Your ship on the left, enemy ship on the right, both with Hull HP.
 * Both ship has weapons and shield.
-* Your ship can charge a weapon and fire on a room the enemy ship.
+* ~~Your ship can charge a weapon and fire on a room the enemy ship.~~
 * Enemy ship can charge a weapon and fire on a room on your ship.
 * Game over and a reset button.
 # Check list

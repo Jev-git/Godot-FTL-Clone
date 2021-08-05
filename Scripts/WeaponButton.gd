@@ -2,23 +2,27 @@ extends Node2D
 
 enum STATE {DEFAULT, SELECTING_TARGET, TARGET_SELECTED}
 
-var m_nWeaponRoom
-var m_nTargetRoom
-
 export var m_psBullet: PackedScene
 export var m_fShootTimeMax: float
 onready var m_iState: int = STATE.DEFAULT
 onready var m_nProgressBar: ProgressBar = $ProgressBar
+onready var m_nWeaponRoom = (get_tree().get_nodes_in_group("MyShip")[0]).find_node("WeaponRoom")
+var m_nTargetRoom
 
 func _ready():
 	$Button.connect("pressed", self, "on_button_pressed")
-	for nEnemyRoom in $"../../EnemyShip".get_children():
+	for nEnemyRoom in (get_tree().get_nodes_in_group("EnemyShip")[0]).get_children():
 		nEnemyRoom.connect("mouse_click", self, "mouse_click_on_enemy_room")
 
 func _process(delta):
 	m_nProgressBar.value += delta * 100 / m_fShootTimeMax
-	if m_nProgressBar.value == 100:
-		# shoot bullet here
+	if m_nProgressBar.value == 100 and m_iState == STATE.TARGET_SELECTED:
+		# Instancing Bullet
+		var nBullet = m_psBullet.instance()
+		get_tree().root.add_child(nBullet)
+		nBullet.global_position = m_nWeaponRoom.global_position
+		nBullet.set_target_room(m_nTargetRoom)
+		
 		m_nProgressBar.value = 0
 
 func on_button_pressed():

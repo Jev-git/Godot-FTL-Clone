@@ -18,7 +18,7 @@ func on_mouse_entered():
 		return
 	if m_bIsSelected:
 		return
-	self.set_scale(Vector2(1.2, 1.2))
+	set_scale(Vector2(1.2, 1.2))
 
 func on_mouse_exited():
 	m_bIsMouseOver = false
@@ -26,24 +26,24 @@ func on_mouse_exited():
 		return
 	if !m_nWeaponButton.is_selecting_target():
 		return
-	self.set_scale(Vector2(1, 1))
+	set_scale(Vector2(1, 1))
 
 func _input(event):
-	if self.m_bIsSelected:
+	if m_bIsSelected:
 		return
 	if event is InputEventMouseButton:
 		if event.is_pressed() and m_bIsMouseOver:
 			for nRoom in get_parent().get_children():
-				nRoom.toggle_room_select(nRoom.name == self.name)
+				nRoom.toggle_room_select(nRoom.name == name)
 
 func toggle_room_select(_bIsSelected: bool):
 	if _bIsSelected:
-		self.m_bIsSelected = true
-		self.set_scale(Vector2(1.2, 1.2))
-		self.rotate(deg2rad(45))
-		self.emit_signal("mouse_click", self)
+		m_bIsSelected = true
+		set_scale(Vector2(1.2, 1.2))
+		emit_signal("mouse_click", self)
 	else:
-		if self.m_bIsSelected:
-			self.rotate(deg2rad(-45))
-		self.set_scale(Vector2(1, 1))
-		self.m_bIsSelected = false
+		set_scale(Vector2(1, 1))
+		m_bIsSelected = false
+
+func on_hit(_nBulletType: Node2D):
+	print("%s is hit by %s" % [name, _nBulletType.name])
