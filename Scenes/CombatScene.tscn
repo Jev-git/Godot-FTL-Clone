@@ -4,7 +4,7 @@
 [ext_resource path="res://Scripts/WeaponButton.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Bullet.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/EnemyRoom.gd" type="Script" id=4]
-[ext_resource path="res://Scripts/EnemyShield.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Shield.gd" type="Script" id=5]
 [ext_resource path="res://Scripts/EnemyWeaponRoom.gd" type="Script" id=6]
 [ext_resource path="res://Scripts/PlayerRoom.gd" type="Script" id=7]
 
@@ -15,13 +15,30 @@
 ]]
 position = Vector2( 320, 240 )
 
-[node name="WeaponRoom" type="Node2D" parent="MyShip"]
+[node name="Shield" type="Node2D" parent="MyShip"]
+modulate = Color( 1, 1, 1, 0.329412 )
+position = Vector2( 192, -176 )
+rotation = 1.5708
+scale = Vector2( 5, 7 )
+script = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="MyShip/Shield"]
+position = Vector2( 7.62939e-06, 0 )
+texture = ExtResource( 1 )
+centered = false
+offset = Vector2( -7.62939e-06, 0 )
+
+[node name="WeaponRoom" type="Node2D" parent="MyShip" groups=[
+"PlayerRoom",
+]]
 script = ExtResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="MyShip/WeaponRoom"]
 texture = ExtResource( 1 )
 
-[node name="ShieldRoom" type="Node2D" parent="MyShip"]
+[node name="ShieldRoom" type="Node2D" parent="MyShip" groups=[
+"PlayerRoom",
+]]
 position = Vector2( -64, 0 )
 script = ExtResource( 7 )
 
@@ -38,6 +55,7 @@ modulate = Color( 1, 1, 1, 0.329412 )
 position = Vector2( -160, -208 )
 scale = Vector2( 5, 7 )
 script = ExtResource( 5 )
+m_bIsEnemyShield = true
 
 [node name="Sprite" type="Sprite" parent="EnemyShip/Shield"]
 position = Vector2( 7.62939e-06, 0 )
@@ -50,6 +68,7 @@ offset = Vector2( -7.62939e-06, 0 )
 ]]
 script = ExtResource( 6 )
 m_psBullet = ExtResource( 3 )
+m_fShootTimeMax = 3.0
 
 [node name="TextureRect" type="TextureRect" parent="EnemyShip/WeaponRoom"]
 margin_left = -32.0
@@ -84,7 +103,7 @@ __meta__ = {
 [node name="MyShip" type="Node2D" parent="UI"]
 
 [node name="WeaponButton" type="Node2D" parent="UI/MyShip"]
-position = Vector2( 240, 400 )
+position = Vector2( 112, 480 )
 script = ExtResource( 2 )
 m_psBullet = ExtResource( 3 )
 m_fShootTimeMax = 3.0
@@ -103,6 +122,28 @@ margin_top = 32.0
 margin_right = 82.0
 margin_bottom = 51.0
 rect_rotation = -90.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Shield" type="Node2D" parent="UI/MyShip"]
+position = Vector2( 192, 512 )
+
+[node name="ProgressBar" type="ProgressBar" parent="UI/MyShip/Shield"]
+margin_right = 112.0
+margin_bottom = 14.0
+rect_rotation = -90.0
+value = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/MyShip/Shield"]
+margin_left = 16.0
+margin_top = -16.0
+margin_right = 56.0
+margin_bottom = 24.0
+text = "Shield"
 __meta__ = {
 "_edit_use_anchors_": false
 }
