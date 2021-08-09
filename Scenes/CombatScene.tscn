@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Assets/Sprites/icon.png" type="Texture" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/WeaponButton.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Bullet.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/EnemyRoom.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/EnemyShield.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/EnemyWeaponRoom.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/PlayerRoom.gd" type="Script" id=7]
 
 [node name="CombatScene" type="Node2D"]
 
@@ -13,12 +16,14 @@
 position = Vector2( 320, 240 )
 
 [node name="WeaponRoom" type="Node2D" parent="MyShip"]
+script = ExtResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="MyShip/WeaponRoom"]
 texture = ExtResource( 1 )
 
 [node name="ShieldRoom" type="Node2D" parent="MyShip"]
 position = Vector2( -64, 0 )
+script = ExtResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="MyShip/ShieldRoom"]
 texture = ExtResource( 1 )
@@ -28,8 +33,23 @@ texture = ExtResource( 1 )
 ]]
 position = Vector2( 768, 240 )
 
-[node name="WeaponRoom" type="Node2D" parent="EnemyShip"]
-script = ExtResource( 4 )
+[node name="Shield" type="Node2D" parent="EnemyShip"]
+modulate = Color( 1, 1, 1, 0.329412 )
+position = Vector2( -160, -208 )
+scale = Vector2( 5, 7 )
+script = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="EnemyShip/Shield"]
+position = Vector2( 7.62939e-06, 0 )
+texture = ExtResource( 1 )
+centered = false
+offset = Vector2( -7.62939e-06, 0 )
+
+[node name="WeaponRoom" type="Node2D" parent="EnemyShip" groups=[
+"EnemyRoom",
+]]
+script = ExtResource( 6 )
+m_psBullet = ExtResource( 3 )
 
 [node name="TextureRect" type="TextureRect" parent="EnemyShip/WeaponRoom"]
 margin_left = -32.0
@@ -41,7 +61,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ShieldRoom" type="Node2D" parent="EnemyShip"]
+[node name="ShieldRoom" type="Node2D" parent="EnemyShip" groups=[
+"EnemyRoom",
+]]
 position = Vector2( 0, 64 )
 script = ExtResource( 4 )
 
@@ -55,15 +77,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="UI" type="Node2D" parent="."]
+[node name="UI" type="Node2D" parent="." groups=[
+"UI",
+]]
 
-[node name="WeaponButton" type="Node2D" parent="UI"]
+[node name="MyShip" type="Node2D" parent="UI"]
+
+[node name="WeaponButton" type="Node2D" parent="UI/MyShip"]
 position = Vector2( 240, 400 )
 script = ExtResource( 2 )
 m_psBullet = ExtResource( 3 )
 m_fShootTimeMax = 3.0
 
-[node name="Button" type="Button" parent="UI/WeaponButton"]
+[node name="Button" type="Button" parent="UI/MyShip/WeaponButton"]
 margin_right = 64.0
 margin_bottom = 20.0
 text = "Weapon"
@@ -71,12 +97,58 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ProgressBar" type="ProgressBar" parent="UI/WeaponButton"]
+[node name="ProgressBar" type="ProgressBar" parent="UI/MyShip/WeaponButton"]
 margin_left = -32.0
 margin_top = 32.0
 margin_right = 82.0
 margin_bottom = 51.0
 rect_rotation = -90.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnemyShip" type="Node2D" parent="UI"]
+position = Vector2( 640, 0 )
+
+[node name="Shield" type="Node2D" parent="UI/EnemyShip"]
+position = Vector2( -64, 512 )
+
+[node name="ProgressBar" type="ProgressBar" parent="UI/EnemyShip/Shield"]
+margin_right = 112.0
+margin_bottom = 14.0
+rect_rotation = -90.0
+value = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/EnemyShip/Shield"]
+margin_left = 16.0
+margin_top = -16.0
+margin_right = 56.0
+margin_bottom = 24.0
+text = "Shield"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Weapon" type="Node2D" parent="UI/EnemyShip"]
+position = Vector2( -160, 512 )
+
+[node name="ProgressBar" type="ProgressBar" parent="UI/EnemyShip/Weapon"]
+margin_right = 112.0
+margin_bottom = 14.0
+rect_rotation = -90.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/EnemyShip/Weapon"]
+margin_left = 16.0
+margin_top = -16.0
+margin_right = 80.0
+margin_bottom = 24.0
+text = "Weapon"
 __meta__ = {
 "_edit_use_anchors_": false
 }

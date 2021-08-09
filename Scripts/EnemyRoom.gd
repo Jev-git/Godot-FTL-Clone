@@ -1,13 +1,15 @@
 extends Node2D
+class_name EnemyRoom
 
-var m_nWeaponButton
+var m_nWeaponButton: Node2D
 
 onready var m_bIsMouseOver: bool = false
 onready var m_bIsSelected: bool = false
+onready var m_anEnemyRooms = get_tree().get_nodes_in_group("EnemyRoom")
 signal mouse_click
 
 func _ready():
-	m_nWeaponButton = $"../../UI/WeaponButton"
+	m_nWeaponButton = get_tree().get_nodes_in_group("UI")[0].find_node("MyShip").find_node("WeaponButton")
 	
 	$TextureRect.connect("mouse_entered", self, "on_mouse_entered")
 	$TextureRect.connect("mouse_exited", self, "on_mouse_exited")
@@ -33,7 +35,7 @@ func _input(event):
 		return
 	if event is InputEventMouseButton:
 		if event.is_pressed() and m_bIsMouseOver:
-			for nRoom in get_parent().get_children():
+			for nRoom in m_anEnemyRooms:
 				nRoom.toggle_room_select(nRoom.name == name)
 
 func toggle_room_select(_bIsSelected: bool):

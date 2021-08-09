@@ -8,11 +8,27 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "Bullet",
+"language": "GDScript",
+"path": "res://Scripts/Bullet.gd"
+}, {
+"base": "Node2D",
+"class": "EnemyRoom",
+"language": "GDScript",
+"path": "res://Scripts/EnemyRoom.gd"
+} ]
+_global_script_class_icons={
+"Bullet": "",
+"EnemyRoom": ""
+}
+
 [application]
 
 config/name="FTL Clone"
 run/main_scene="res://Scenes/CombatScene.tscn"
-config/icon="res://Assets/Sprites/icon.png"
+config/icon="res://icon.png"
 
 [display]
 

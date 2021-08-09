@@ -7,11 +7,11 @@ export var m_fShootTimeMax: float
 onready var m_iState: int = STATE.DEFAULT
 onready var m_nProgressBar: ProgressBar = $ProgressBar
 onready var m_nWeaponRoom = (get_tree().get_nodes_in_group("MyShip")[0]).find_node("WeaponRoom")
-var m_nTargetRoom
+var m_nTargetRoom: Node2D
 
 func _ready():
 	$Button.connect("pressed", self, "on_button_pressed")
-	for nEnemyRoom in (get_tree().get_nodes_in_group("EnemyShip")[0]).get_children():
+	for nEnemyRoom in get_tree().get_nodes_in_group("EnemyRoom"):
 		nEnemyRoom.connect("mouse_click", self, "mouse_click_on_enemy_room")
 
 func _process(delta):

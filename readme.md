@@ -1,5 +1,5 @@
 # Doing
-Enemy shield.
+Player shield.
 # Things to keep in mind
 * This project is to learn new skills, not to have a full game/clone.
 * Scope: 1 month (August 2021).
@@ -12,7 +12,7 @@ Enemy shield.
 * Your ship on the left, enemy ship on the right, both with Hull HP.
 * Both ship has weapons and shield.
 * ~~Your ship can charge a weapon and fire on a room the enemy ship.~~
-* Enemy ship can charge a weapon and fire on a room on your ship.
+* ~~Enemy ship can charge a weapon and fire on a room on your ship.~~
 * Game over and a reset button.
 # Check list
 * Basic combat: able to shoot at enemy
