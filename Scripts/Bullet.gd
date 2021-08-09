@@ -13,8 +13,7 @@ func _process(delta):
 		return
 	if (
 		!m_bIsEnemyBullet
-		and global_position.x <= m_nEnemyShield.global_position.x
-		and m_nEnemyShield.global_position.x - global_position.x <= m_fMinDistance
+		and abs(m_nEnemyShield.global_position.x - global_position.x) <= m_fMinDistance
 		and m_nEnemyShield.is_active()
 		):
 		m_nEnemyShield.on_hit(self)
@@ -25,8 +24,8 @@ func _process(delta):
 	else:
 		global_position += delta * (m_vTargetPos - global_position) * m_fSpeed
 
-func set_target_room(_nTargetRoom: Node2D):
-	m_bIsEnemyBullet = false if _nTargetRoom.is_in_group("EnemyRoom") else true
+func set_target_room(_nTargetRoom: Node2D, _bIsEnemyRoom: bool = true):
+	m_bIsEnemyBullet = !_bIsEnemyRoom
 	m_nTargetRoom = _nTargetRoom
 	m_vTargetPos = m_nTargetRoom.global_position
 	rotate(global_position.angle_to_point(m_vTargetPos))

@@ -13,6 +13,6 @@ func _process(delta):
 		get_tree().root.add_child(nBullet)
 		var nTargetRoom: Node2D = m_anPlayerRooms[randi() % m_anPlayerRooms.size()]
 		nBullet.global_position = global_position
-		nBullet.set_target_room(nTargetRoom)
+		nBullet.set_target_room(nTargetRoom, false)
 
 		m_nProgressBar.value = 0
