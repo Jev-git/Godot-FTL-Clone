@@ -1,5 +1,5 @@
 # Doing
-Hull HP and weapon damage.
+Popup and reset button.
 # Things to keep in mind
 * This project is to learn new skills, not to have a full game/clone.
 * Scope: 1 month (August 2021).
@@ -9,7 +9,7 @@ Hull HP and weapon damage.
 # What to make
 * A functional prototype of FTL, with incremental features.
 # Minimal viable product
-* Your ship on the left, enemy ship on the right, both with Hull HP.
+* ~~Your ship on the left, enemy ship on the right, both with Hull HP.~~
 * ~~Both ship has weapons and shield.~~
 * ~~Your ship can charge a weapon and fire on a room the enemy ship.~~
 * ~~Enemy ship can charge a weapon and fire on a room on your ship.~~

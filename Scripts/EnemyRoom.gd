@@ -6,6 +6,7 @@ var m_nWeaponButton: Node2D
 onready var m_bIsMouseOver: bool = false
 onready var m_bIsSelected: bool = false
 onready var m_anEnemyRooms = get_tree().get_nodes_in_group("EnemyRoom")
+onready var m_nHP = get_tree().get_nodes_in_group("UI")[0].get_node("EnemyShip/HP/HPBar")
 signal mouse_click
 
 func _ready():
@@ -48,4 +49,4 @@ func toggle_room_select(_bIsSelected: bool):
 		m_bIsSelected = false
 
 func on_hit(_nBulletType: Node2D):
-	print("%s is hit by %s" % [name, _nBulletType.name])
+	m_nHP.take_damage(_nBulletType.m_iDamage)

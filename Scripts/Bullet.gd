@@ -3,6 +3,7 @@ class_name Bullet
 
 export var m_fSpeed: float = 10.0
 export var m_fMinDistance: float = 1.0
+export var m_iDamage: int = 1
 onready var m_nPlayerShield: Node2D = get_tree().get_nodes_in_group("MyShip")[0].get_node("Shield")
 onready var m_nEnemyShield: Node2D = get_tree().get_nodes_in_group("EnemyShip")[0].get_node("Shield")
 var m_bIsEnemyBullet: bool

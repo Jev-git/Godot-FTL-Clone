@@ -27,7 +27,6 @@ func _process(delta):
 
 func on_button_pressed():
 	if m_iState != STATE.SELECTING_TARGET:
-		print("Selecting target")
 		m_iState = STATE.SELECTING_TARGET
 		if m_nTargetRoom:
 			m_nTargetRoom.toggle_room_select(false)
@@ -37,7 +36,6 @@ func mouse_click_on_enemy_room(_nEnemyRoom):
 	if m_iState == STATE.SELECTING_TARGET:
 		m_nTargetRoom = _nEnemyRoom
 		m_iState = STATE.TARGET_SELECTED
-		print("Target selected: %s" % _nEnemyRoom.name)
 
 func is_selecting_target() -> bool:
 	return m_iState == STATE.SELECTING_TARGET

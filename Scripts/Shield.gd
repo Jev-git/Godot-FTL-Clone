@@ -22,7 +22,6 @@ func on_hit(_nBulletType: Node2D):
 	m_bIsActive = false
 	m_nSprite.visible = false
 	m_nProgressBar.value = 0
-	print("Shield get hit by %s" % [_nBulletType.name])
 
 func is_active():
 	return m_bIsActive

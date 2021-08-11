@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/WeaponButton.gd" type="Script" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Scripts/Shield.gd" type="Script" id=5]
 [ext_resource path="res://Scripts/EnemyWeaponRoom.gd" type="Script" id=6]
 [ext_resource path="res://Scripts/PlayerRoom.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/HPBar.gd" type="Script" id=8]
+[ext_resource path="res://Scenes/HP.tscn" type="PackedScene" id=9]
 
 [node name="CombatScene" type="Node2D"]
 
@@ -148,6 +150,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="HP" type="Node2D" parent="UI/MyShip"]
+position = Vector2( 64, 16 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/MyShip/HP"]
+margin_right = 40.0
+margin_bottom = 40.0
+text = "HP"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HPBar" type="Node2D" parent="UI/MyShip/HP"]
+position = Vector2( 32, 0 )
+scale = Vector2( 0.25, 0.25 )
+script = ExtResource( 8 )
+m_psHPBar = ExtResource( 9 )
+
 [node name="EnemyShip" type="Node2D" parent="UI"]
 position = Vector2( 640, 0 )
 
@@ -193,3 +212,21 @@ text = "Weapon"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="HP" type="Node2D" parent="UI/EnemyShip"]
+position = Vector2( -32, 16 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/EnemyShip/HP"]
+margin_right = 40.0
+margin_bottom = 40.0
+text = "HP"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HPBar" type="Node2D" parent="UI/EnemyShip/HP"]
+position = Vector2( 32, 0 )
+scale = Vector2( 0.25, 0.25 )
+script = ExtResource( 8 )
+m_psHPBar = ExtResource( 9 )
+m_iMaxHP = 5
