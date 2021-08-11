@@ -15,3 +15,6 @@ export_presets.cfg
 
 # Vim files
 *.swp
+
+# Build directory
+Build
