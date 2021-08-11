@@ -1,5 +1,3 @@
-# Doing
-Popup and reset button.
 # Things to keep in mind
 * This project is to learn new skills, not to have a full game/clone.
 * Scope: 1 month (August 2021).
@@ -13,7 +11,7 @@ Popup and reset button.
 * ~~Both ship has weapons and shield.~~
 * ~~Your ship can charge a weapon and fire on a room the enemy ship.~~
 * ~~Enemy ship can charge a weapon and fire on a room on your ship.~~
-* Game over and a reset button.
+* ~~Game over and a reset button.~~
 # Check list
 * Basic combat: able to shoot at enemy
     * Enemy is an empty ship, no shield, no crews and do not fight back.

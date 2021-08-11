@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/WeaponButton.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Scripts/PlayerRoom.gd" type="Script" id=7]
 [ext_resource path="res://Scripts/HPBar.gd" type="Script" id=8]
 [ext_resource path="res://Scenes/HP.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scripts/GameOverPopup.gd" type="Script" id=10]
 
 [node name="CombatScene" type="Node2D"]
 
@@ -108,7 +109,7 @@ __meta__ = {
 position = Vector2( 112, 480 )
 script = ExtResource( 2 )
 m_psBullet = ExtResource( 3 )
-m_fShootTimeMax = 3.0
+m_fShootTimeMax = 2.0
 
 [node name="Button" type="Button" parent="UI/MyShip/WeaponButton"]
 margin_right = 64.0
@@ -166,6 +167,7 @@ position = Vector2( 32, 0 )
 scale = Vector2( 0.25, 0.25 )
 script = ExtResource( 8 )
 m_psHPBar = ExtResource( 9 )
+m_iMaxHP = 5
 
 [node name="EnemyShip" type="Node2D" parent="UI"]
 position = Vector2( 640, 0 )
@@ -229,4 +231,20 @@ position = Vector2( 32, 0 )
 scale = Vector2( 0.25, 0.25 )
 script = ExtResource( 8 )
 m_psHPBar = ExtResource( 9 )
-m_iMaxHP = 5
+m_iMaxHP = 3
+
+[node name="GameOverPopup" type="Node2D" parent="UI"]
+pause_mode = 2
+position = Vector2( 416, 240 )
+script = ExtResource( 10 )
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="UI/GameOverPopup"]
+visible = true
+margin_top = -16.0
+margin_right = 200.0
+margin_bottom = 54.0
+window_title = ""
+dialog_text = "Replay?"
+__meta__ = {
+"_edit_use_anchors_": false
+}

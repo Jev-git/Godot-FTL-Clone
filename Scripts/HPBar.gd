@@ -20,9 +20,8 @@ func _ready():
 
 func take_damage(_iAmount: int):
 	if m_iCurrentHP <= _iAmount:
-		print("Ship explode!!!")
-		emit_signal("ship_exploded")
 		get_parent().visible = false
+		emit_signal("ship_exploded")
 	else:
 		for i in range(_iAmount):
 			m_aHPSprites[m_iCurrentHP - 1 - i].set_modulate(Color(1, 0, 0, 1))
