@@ -239,7 +239,6 @@ position = Vector2( 416, 240 )
 script = ExtResource( 10 )
 
 [node name="ConfirmationDialog" type="ConfirmationDialog" parent="UI/GameOverPopup"]
-visible = true
 margin_top = -16.0
 margin_right = 200.0
 margin_bottom = 54.0
