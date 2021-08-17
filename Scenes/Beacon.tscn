@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Beacon.gd" type="Script" id=2]
+
+[node name="Beacon" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 16.0
+margin_top = -16.0
+margin_right = 56.0
+margin_bottom = 24.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 56.0
+margin_bottom = 56.0
+rect_scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,6 +1,6 @@
 # Doing
-* Install build tools for windows.
-* Upload a build to github.
+* Highlight neighbor on mouse over (position is wrong because of the popup_centered() function)
+* Ship fly around the beacon that it is currently on.
 # Things to keep in mind
 * This project is to learn new skills, not to have a full game/clone.
 * Scope: 1 month (August 2021).

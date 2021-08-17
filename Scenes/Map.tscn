@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/MapPopup.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Beacons.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Beacon.tscn" type="PackedScene" id=4]
+
+[node name="Map" type="Node2D"]
+
+[node name="MapPopup" type="Popup" parent="."]
+visible = true
+margin_right = 768.0
+margin_bottom = 384.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+m_psBeacon = ExtResource( 4 )
+
+[node name="Background" type="Sprite" parent="MapPopup"]
+modulate = Color( 0.223529, 0.0862745, 0.0862745, 0.254902 )
+scale = Vector2( 12, 6 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Beacons" type="Node2D" parent="MapPopup"]
+script = ExtResource( 3 )
+m_psBeacon = ExtResource( 4 )
+m_iMinBeaconCount = 3
+m_iMaxBeaconCount = 7
+m_fPadding = 50.0
