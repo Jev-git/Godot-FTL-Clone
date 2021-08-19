@@ -9,7 +9,7 @@ onready var m_iHighlightBeaconIndex: int
 onready var m_bIsHighlightingNeighbors: bool = false
 # Ship current position
 onready var m_nMyShip: Node2D = $MyShip
-onready var m_iMyShipCurrentBeaconIndex: int = 0
+onready var m_iMyShipCurrentBeaconIndex: int
 
 func _ready():
 	popup_centered()
@@ -18,11 +18,12 @@ func _ready():
 		var nTexture = m_anBeacons[i].get_node("TextureRect")
 		nTexture.connect("mouse_entered", self, "highlight_beacon", [i, true])
 		nTexture.connect("mouse_exited", self, "highlight_beacon", [i, false])
+		m_anBeacons[i].connect("pressed", self, "jump_to_beacon", [i])
 		
 		# Ship initial position
 		if m_anBeacons[i].position.x < m_anBeacons[m_iMyShipCurrentBeaconIndex].position.x:
 			m_iMyShipCurrentBeaconIndex = i
-	jump_to_beacon(m_iMyShipCurrentBeaconIndex)
+			m_nMyShip.position = m_anBeacons[i].position
 
 func _process(delta):
 	m_nMyShip.rotate(0.5 * delta)
@@ -43,7 +44,8 @@ func highlight_beacon(_iIndex: int, _bIsHighlighting: bool):
 	m_bIsHighlightingNeighbors = _bIsHighlighting
 	update()
 
-func jump_to_beacon(iIndex: int):
-#	print(iIndex)
-	m_iMyShipCurrentBeaconIndex = iIndex
-	m_nMyShip.position = m_anBeacons[iIndex].position
+func jump_to_beacon(_iIndex: int):
+	if !m_anBeacons[_iIndex].is_neighbor_of_beacon(m_iMyShipCurrentBeaconIndex):
+		return
+	m_iMyShipCurrentBeaconIndex = _iIndex
+	m_nMyShip.position = m_anBeacons[_iIndex].position

@@ -27,7 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="FTL Clone"
-run/main_scene="res://Scenes/CombatScene.tscn"
+run/main_scene="res://Scenes/Map.tscn"
 config/icon="res://icon.png"
 
 [display]
