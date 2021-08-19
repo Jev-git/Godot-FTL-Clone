@@ -1,5 +1,5 @@
 # Doing
-* Ship fly around the beacon that it is currently on.
+* Able to jump to neighbor beacon
 # Things to keep in mind
 * This project is to learn new skills, not to have a full game/clone.
 * Scope: 1 month (August 2021).

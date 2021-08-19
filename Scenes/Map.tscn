@@ -29,3 +29,11 @@ m_psBeacon = ExtResource( 4 )
 m_iMinBeaconCount = 3
 m_iMaxBeaconCount = 7
 m_fPadding = 50.0
+
+[node name="MyShip" type="Node2D" parent="MapPopup"]
+position = Vector2( 64, 32 )
+
+[node name="Sprite" type="Sprite" parent="MapPopup/MyShip"]
+position = Vector2( -32, 0 )
+scale = Vector2( 0.25, 0.5 )
+texture = ExtResource( 1 )
