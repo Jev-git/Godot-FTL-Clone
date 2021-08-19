@@ -26,8 +26,6 @@ centered = false
 [node name="Beacons" type="Node2D" parent="MapPopup"]
 script = ExtResource( 3 )
 m_psBeacon = ExtResource( 4 )
-m_iMinBeaconCount = 3
-m_iMaxBeaconCount = 7
 m_fPadding = 50.0
 
 [node name="MyShip" type="Node2D" parent="MapPopup"]

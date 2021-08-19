@@ -44,6 +44,6 @@ func highlight_beacon(_iIndex: int, _bIsHighlighting: bool):
 	update()
 
 func jump_to_beacon(iIndex: int):
-	print(iIndex)
+#	print(iIndex)
 	m_iMyShipCurrentBeaconIndex = iIndex
 	m_nMyShip.position = m_anBeacons[iIndex].position
