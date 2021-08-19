@@ -78,4 +78,3 @@ func create_connections_between_beacons():
 			m_anBeacons[iIndex].add_neighbor_beacon(m_anBeacons[i])
 		m_aiConnections.append(aiConnections)
 	m_aiConnections.invert()
-	print(m_aiConnections)

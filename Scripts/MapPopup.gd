@@ -7,9 +7,11 @@ onready var m_aiConnections = $Beacons.m_aiConnections
 # Highlight neighbors
 onready var m_iHighlightBeaconIndex: int
 onready var m_bIsHighlightingNeighbors: bool = false
-# Ship current position
+
 onready var m_nMyShip: Node2D = $MyShip
+# Important beacons
 onready var m_iMyShipCurrentBeaconIndex: int
+onready var m_iExitBeaconIndex: int
 
 func _ready():
 	popup_centered()
@@ -20,10 +22,14 @@ func _ready():
 		nTexture.connect("mouse_exited", self, "highlight_beacon", [i, false])
 		m_anBeacons[i].connect("pressed", self, "jump_to_beacon", [i])
 		
-		# Ship initial position
+		# Important beacons
 		if m_anBeacons[i].position.x < m_anBeacons[m_iMyShipCurrentBeaconIndex].position.x:
 			m_iMyShipCurrentBeaconIndex = i
-			m_nMyShip.position = m_anBeacons[i].position
+		if m_anBeacons[i].position.x > m_anBeacons[m_iExitBeaconIndex].position.x:
+			m_iExitBeaconIndex = i
+	
+	m_nMyShip.position = m_anBeacons[m_iMyShipCurrentBeaconIndex].position
+	m_anBeacons[m_iExitBeaconIndex].set_text("EXIT")
 
 func _process(delta):
 	m_nMyShip.rotate(0.5 * delta)
@@ -37,7 +43,10 @@ func _draw():
 			
 	if m_bIsHighlightingNeighbors:
 		for nNeighbor in m_anBeacons[m_iHighlightBeaconIndex].m_anNeighborBeacons:
-			draw_line(m_anBeacons[m_iHighlightBeaconIndex].position, nNeighbor.position, Color.red, 2)
+			if nNeighbor.m_iIndex == m_iMyShipCurrentBeaconIndex:
+				draw_line(m_anBeacons[m_iHighlightBeaconIndex].position, nNeighbor.position, Color.purple, 2)
+			else:
+				draw_line(m_anBeacons[m_iHighlightBeaconIndex].position, nNeighbor.position, Color.red, 2)
 
 func highlight_beacon(_iIndex: int, _bIsHighlighting: bool):
 	m_iHighlightBeaconIndex = _iIndex

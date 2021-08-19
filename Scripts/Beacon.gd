@@ -23,7 +23,9 @@ func on_mouse_exited():
 
 func set_index(_iIndex: int):
 	m_iIndex = _iIndex
-	$RichTextLabel.text = String(_iIndex)
+
+func set_text(_sText: String):
+	$RichTextLabel.text = String(_sText)
 
 func add_neighbor_beacon(_nNeighbor: Node2D):
 	m_anNeighborBeacons.append(_nNeighbor)

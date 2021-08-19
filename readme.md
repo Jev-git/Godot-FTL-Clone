@@ -1,5 +1,7 @@
 # Doing
-* Able to jump to neighbor beacon
+* Display map after battle ended.
+* Close map, reload battle.
+* Repeat.
 # Things to keep in mind
 * This project is to learn new skills, not to have a full game/clone.
 * Scope: 1 month (August 2021).
@@ -16,7 +18,7 @@
 # Check list
 * ~~Basic combat: able to shoot at enemy~~
 * Able to FTL jump to the next star (basically reload the combat scene).
-    * Map.
+    * ~~Map.~~
     * Able to jump to next beacon after combat.
     * FTL recharge.
     * Able to jump to next beacon mid combat if FTL is fully charged.
