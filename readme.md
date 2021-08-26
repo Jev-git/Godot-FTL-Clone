@@ -1,7 +1,6 @@
 # Doing
-* Display map after battle ended.
-* Close map, reload battle.
-* Repeat.
+* Reset ships status after battle: weapon and shield charge amount, weapon target
+* Unhighlight map before or after close
 # Things to keep in mind
 * This project is to learn new skills, not to have a full game/clone.
 * Scope: 1 month (August 2021).
@@ -19,7 +18,7 @@
 * ~~Basic combat: able to shoot at enemy~~
 * Able to FTL jump to the next star (basically reload the combat scene).
     * ~~Map.~~
-    * Able to jump to next beacon after combat.
+    * ~~Able to jump to next beacon after combat.~~
     * FTL recharge.
     * Able to jump to next beacon mid combat if FTL is fully charged.
 * Add shield to enemy ship.

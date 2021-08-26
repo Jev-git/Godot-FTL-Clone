@@ -13,9 +13,13 @@ onready var m_nMyShip: Node2D = $MyShip
 onready var m_iMyShipCurrentBeaconIndex: int
 onready var m_iExitBeaconIndex: int
 
+signal jump_to_beacon
+
 func _ready():
-	popup_centered()
-	
+	set_exclusive(true)
+	connect("about_to_show", self, "about_to_show")
+	connect("popup_hide", self, "popup_hide")
+	$CloseButton.connect("pressed", self, "close_popup")
 	for i in range(m_anBeacons.size()):
 		var nTexture = m_anBeacons[i].get_node("TextureRect")
 		nTexture.connect("mouse_entered", self, "highlight_beacon", [i, true])
@@ -58,3 +62,12 @@ func jump_to_beacon(_iIndex: int):
 		return
 	m_iMyShipCurrentBeaconIndex = _iIndex
 	m_nMyShip.position = m_anBeacons[_iIndex].position
+	emit_signal("jump_to_beacon")
+	hide()
+
+func about_to_show():
+	get_tree().paused = true
+
+func popup_hide():
+	get_tree().paused = false
+	update()

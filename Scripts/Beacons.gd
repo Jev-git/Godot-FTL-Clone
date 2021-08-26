@@ -30,11 +30,6 @@ func _ready():
 	randomize_beacons_position()
 	create_connections_between_beacons()
 
-func _input(event):
-	if event is InputEventKey:
-		if event.pressed and event.scancode == KEY_SPACE:
-			get_tree().reload_current_scene()
-
 func randomize_beacons_position():
 	for i in range(m_anBeacons.size()):
 		if i == 0:
